@@ -19,9 +19,7 @@ fun main() {
         }
 
     fun part2(input: List<String>): Int {
-
         val score = MutableList(input.size) {1}
-        score[0] = 1
 
         input.mapIndexed { index, line ->
             val (_, winningString, myCardsString) = line.split(":", "|")
