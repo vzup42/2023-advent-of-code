@@ -21,7 +21,7 @@ fun main() {
     fun part2(input: List<String>): Int {
         val score = MutableList(input.size) {1}
 
-        input.mapIndexed { index, line ->
+        input.forEachIndexed { index, line ->
             val (_, winningString, myCardsString) = line.split(":", "|")
             val winning = winningString.findNumbers().toSet()
             val myCards = myCardsString.findNumbers().toList()
