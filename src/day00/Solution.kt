@@ -3,9 +3,9 @@ package day00
 import println
 import readInput
 
-const val day = "00"
-
 fun main() {
+    val day = "00"
+
     fun part1(input: List<String>): Int {
         return input.size
     }
