@@ -7,10 +7,10 @@ fun main() {
     val day = "09"
 
     fun part1(input: List<String>): Int =
-        input.sumOf { it.split(" ").map(String::toInt).findTheNextValue() }
+        input.sumOf { it.split(" ").map(String::toInt).nextValue() }
 
     fun part2(input: List<String>): Int =
-        input.sumOf { it.split(" ").map(String::toInt).findThePreviousValue() }
+        input.sumOf { it.split(" ").map(String::toInt).previousValue() }
 
     // Part 1
     val testInput1 = readInput(day, "test_input_1")
@@ -26,10 +26,10 @@ fun main() {
     part2(input).println()
 }
 
-fun List<Int>.findTheNextValue(): Int =
-    if (this.all { it == 0 }) 0 else this.last() + this.zipWithNext(difference()).findTheNextValue()
+fun List<Int>.nextValue(): Int =
+    if (this.all { it == 0 }) 0 else this.last() + this.zipWithNext(difference).nextValue()
 
-fun List<Int>.findThePreviousValue(): Int =
-    if (this.all { it == 0 }) 0 else this.first() - this.zipWithNext(difference()).findThePreviousValue()
+fun List<Int>.previousValue(): Int =
+    if (this.all { it == 0 }) 0 else this.first() - this.zipWithNext(difference).previousValue()
 
-private fun difference() = { a: Int, b: Int -> b - a }
+private val difference = { a: Int, b: Int -> b - a }
