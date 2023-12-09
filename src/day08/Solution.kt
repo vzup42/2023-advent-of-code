@@ -18,9 +18,8 @@ fun main() {
         val sequence = generateSequence(input[0])
         val map = input.subList(fromIndex = 2, toIndex = input.size).flatMap(String::parseDirections).toMap()
         val starters = map.keys.map { it.source }.filter { it.endsWith("A") }.toSet()
-
-        val counters = starters.map {
-            calculateStepsToEnd(it, sequence, map) { it.endsWith("Z") }.toLong()
+        val counters = starters.map {starter ->
+            calculateStepsToEnd(starter, sequence, map) { it.endsWith("Z") }.toLong()
         }
         return counters.reduce(::lcm)
     }
