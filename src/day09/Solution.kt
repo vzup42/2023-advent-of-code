@@ -10,7 +10,7 @@ fun main() {
         input.sumOf { it.split(" ").map(String::toInt).nextValue() }
 
     fun part2(input: List<String>): Int =
-        input.sumOf { it.split(" ").map(String::toInt).previousValue() }
+        input.sumOf { it.split(" ").map(String::toInt).reversed().nextValue() }
 
     // Part 1
     val testInput1 = readInput(day, "test_input_1")
@@ -28,8 +28,5 @@ fun main() {
 
 fun List<Int>.nextValue(): Int =
     if (this.all { it == 0 }) 0 else this.last() + this.zipWithNext(difference).nextValue()
-
-fun List<Int>.previousValue(): Int =
-    if (this.all { it == 0 }) 0 else this.first() - this.zipWithNext(difference).previousValue()
 
 private val difference = { a: Int, b: Int -> b - a }
